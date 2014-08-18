@@ -15,6 +15,7 @@ BQQ.init({
 
 // 授权
 // -----------------
+var app = express();
 app.get('/authorize', function(req, res) {
   var authorizeUrl = BQQ.getAuthorizeUrl({
     redirectUrl: 'http://yourdomain.com/authorized',
@@ -57,3 +58,33 @@ bqq.getCompanyInfo(function(err, data) {
 ```
 
 ## API
+
+### BQQ.init(options)
+初始化 BQQ ...指定开放平台的应用程序信息。
+
+```
+options:
+- appId       在开放平台申请应用获得的 app_id
+- appSecret   在开放平台申请应用获得的 app_secret
+- ip          服务器的 IP 地址
+```
+
+### BQQ.getAuthorizeUrl(options)
+获取认证员工授权的 URL 地址。
+
+```
+options:
+- redirectUrl  授权成功之后的回调地址
+- state        防范 CSRF 攻击，会在授权成功之后原样返回
+- ui           授权界面的类型，可选 ('web'|'ios'|'android'|'auto')，默认 'auto'
+```
+
+### BQQ.getAccessToken(options)
+获取员工 access_token
+
+```
+options:
+- code          授权成功之后传回的参数
+- state         防范 CSRF 攻击
+- redirectUrl   需与授权时的地址回调地址保持一致
+```
