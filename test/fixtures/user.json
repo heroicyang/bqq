@@ -1,0 +1,55 @@
+{
+  "list": {
+    "timestamp": 1408414724,
+    "items": [
+      {
+        "open_id": "2c0c7cdf67fd7d442db2390dce393bce",
+        "gender": 1,
+        "account": "yx",
+        "realname": "Heroic Yang",
+        "p_dept_id": "74537005",
+        "mobile": 0,
+        "hidden": 0,
+        "role_id": 0
+      }
+    ]
+  },
+  "info": {
+    "2c0c7cdf67fd7d442db2390dce393bce": {
+      "open_id": "2c0c7cdf67fd7d442db2390dce393bce",
+      "gender": 1,
+      "dept_id": 1565199740,
+      "dept_ids": [
+        1565199740,
+        1291619508,
+        140325039
+      ],
+      "role_id": 16777216,
+      "account": "Karl",
+      "name": "卡尔",
+      "titles": [
+        "员工",
+        "秘书",
+        "组长"
+      ],
+      "title": "员工",
+      "email": 0,
+      "mobile": 1,
+      "hidden": 0
+    }
+  },
+  "face": {
+    "items": {
+      "2c0c7cdf67fd7d442db2390dce393bce": "http://q4.qlogo.cn/g?b=qq&k=9WO8jIfeqm2smbqibCeBIzw&s=100&t=1401893441"
+    }
+  },
+  "email": {
+    "2c0c7cdf67fd7d442db2390dce393bce": "a@b.c"
+  },
+  "mobile": {
+    "2c0c7cdf67fd7d442db2390dce393bce": "13888888888"
+  },
+  "qq": {
+    "2c0c7cdf67fd7d442db2390dce393bce": "12345"
+  }
+}
