@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - "0.10"
+
+branches:
+  only:
+    - master
+
+script: node_modules/.bin/gulp
+
+notifications:
+  email: "me@heroicyang.com"
