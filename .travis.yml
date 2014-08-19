@@ -7,7 +7,7 @@ branches:
   only:
     - master
 
-script: node_modules/.bin/gulp
+script: npm test
 
 notifications:
   email: "me@heroicyang.com"
