@@ -1,7 +1,7 @@
 ## bqq
-![NPM version](http://img.shields.io/npm/v/node-bqq.svg?style=flat-square)
- ![Build Status](http://img.shields.io/travis/heroicyang/bqq.svg?style=flat-square)
- ![Dependency Status](http://img.shields.io/david/heroicyang/bqq.svg?style=flat-square)
+![NPM version](http://img.shields.io/npm/v/node-bqq.svg?style=flat-square)&nbsp;
+![Build Status](http://img.shields.io/travis/heroicyang/bqq.svg?style=flat-square)&nbsp;
+![Dependency Status](http://img.shields.io/david/heroicyang/bqq.svg?style=flat-square)
 > 腾讯企业QQ开放平台 API 的 node 实现。
 
 ## Usage
