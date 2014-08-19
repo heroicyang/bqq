@@ -1,15 +1,20 @@
 {
   "name": "node-bqq",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "腾讯企业QQ开放平台 API 的 node 实现。",
   "main": "lib/index.js",
   "dependencies": {
     "hyperquest": "^0.3.0",
     "lodash": "^2.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "express": "^4.8.4",
+    "gulp": "^3.8.7",
+    "gulp-mocha": "^1.0.0",
+    "should": "^4.0.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
