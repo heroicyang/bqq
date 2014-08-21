@@ -1,6 +1,5 @@
 /*global it*/
 
-var qs = require('querystring');
 var should = require('should');
 
 var BQQ = require('../lib/index');
@@ -12,28 +11,25 @@ it('BQQ.init(options)', function() {
   BQQ.init({
     appId: '12345',
     appSecret: '67890',
-    baseSite: 'http://bqq.com'
+    baseSite: 'http://bqq.com',
+    redirectUrl: 'http://app.com/oauth2/callback'
   });
 
-  BQQ.appId.should.eql('12345');
-  BQQ.appSecret.should.eql('67890');
-  BQQ.baseSite.should.eql('http://bqq.com');
+  BQQ.should.have.property('appId', '12345');
+  BQQ.should.have.property('appSecret', '67890');
+  BQQ.should.have.property('baseSite', 'http://bqq.com');
 });
 
 it('BQQ.getAuthorizeUrl(options)', function() {
   var authorizeUrl = BQQ.getAuthorizeUrl({
-    redirectUrl: 'http://app.com/oauth2/callback',
     state: 'asdfg'
   });
-  var queryParams = {
-    response_type: 'code',
-    app_id: '12345',
-    redirect_uri: 'http://app.com/oauth2/callback',
-    state: 'asdfg',
-    ui: 'auto'
-  };
 
-  authorizeUrl.should.eql('http://bqq.com/oauth2/authorize?' + qs.stringify(queryParams));
+  authorizeUrl.should.eql('http://bqq.com/oauth2/authorize?' +
+    'response_type=code&' +
+    'app_id=12345&' +
+    'redirect_uri=http%3A%2F%2Fapp.com%2Foauth2%2Fcallback&' +
+    'state=asdfg&ui=auto');
 });
 
 it('BQQ.getAccessToken(options)', function(done) {
@@ -41,20 +37,17 @@ it('BQQ.getAccessToken(options)', function(done) {
     BQQ.init({
       appId: config.appId,
       appSecret: config.appSecret,
-      baseSite: 'http://localhost:' + s.address().port
+      baseSite: 'http://localhost:' + s.address().port,
+      redirectUrl: 'http://app.com/oauth2/callback'
     });
 
-    BQQ.getAccessToken({
-      code: config.code,
-      state: 'asdfg',
-      redirectUrl: 'http://app.com/oauth2/callback'
-    }, function(err, data) {
+    BQQ.getAccessToken(config.code, 'asdfg', function(err, data) {
       should.not.exist(err);
       should.exist(data);
 
       data.ret.should.eql(0);
-      data.data.open_id.should.eql(accessData.open_id);
-      data.data.state.should.eql('asdfg');
+      data.data.should.have.property('open_id', accessData.open_id);
+      data.data.should.have.property('state', 'asdfg');
 
       done();
     });
@@ -78,7 +71,8 @@ it('bqq.getApiUrl(path, extraQueryParams)', function() {
   BQQ.init({
     appId: '12345',
     appSecret: '67890',
-    baseSite: 'http://bqq.com'
+    baseSite: 'http://bqq.com',
+    redirectUrl: 'http://app.com/oauth2/callback'
   });
 
   var bqq = new BQQ({
@@ -86,7 +80,7 @@ it('bqq.getApiUrl(path, extraQueryParams)', function() {
     companyToken: config.companyToken
   });
   var apiUrl = bqq.getApiUrl('/api/user/list', { timestamp: 0 });
-  
+
   apiUrl.should.eql('http://bqq.com/api/user/list?' +
     'company_id=zTO8ehphrLtEBX28OKD99gbLRbqDSUxn' +
     '&company_token=dukJ7o9bVMk8zsQ8tYrsBpk5dS5pbkuY' +
