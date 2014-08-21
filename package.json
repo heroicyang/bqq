@@ -1,6 +1,6 @@
 {
   "name": "node-bqq",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "腾讯企业QQ开放平台 API 的 node 实现。",
   "main": "lib/index.js",
   "dependencies": {
