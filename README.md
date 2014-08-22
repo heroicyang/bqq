@@ -87,6 +87,14 @@ state:  防范 CSRF 攻击
 callback(err, data)
 ```
 
+### BQQ.refreshAccessToken(refreshToken, callback)
+刷新 access_token
+
+```
+refreshToken: 第一次刷新则是授权时取得的 refresh_token，后面则是刷新授权后取得的
+callback(err, data)
+```
+
 ### bqq.getCompanyInfo(callback)
 获取企业的基本资料。
 

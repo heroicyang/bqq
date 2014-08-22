@@ -19,6 +19,18 @@ app.get('/oauth2/token', function(req, res) {
   });
 });
 
+app.get('/oauth2/companyRefresh', function(req, res) {
+  if (req.query.app_id !== config.appId || req.query.app_secret !== config.appSecret ||
+      req.query.refresh_token !== accessData.refresh_token) {
+    return res.json({ ret: 1 });
+  }
+
+  res.json({
+    ret: 0,
+    data: _.omit(accessData, 'open_id')
+  });
+});
+
 app.use('/api/*', function(req, res, next) {
   if (req.query.app_id !== config.appId || req.query.company_id !== config.companyId ||
       req.query.company_token !== config.companyToken) {

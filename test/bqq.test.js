@@ -54,6 +54,27 @@ it('BQQ.getAccessToken(options)', function(done) {
   });
 });
 
+it('BQQ.refreshAccessToken(refreshToken, callback)', function(done) {
+  var s = app.listen(function() {
+    BQQ.init({
+      appId: config.appId,
+      appSecret: config.appSecret,
+      baseSite: 'http://localhost:' + s.address().port,
+      redirectUrl: 'http://app.com/oauth2/callback'
+    });
+    
+    BQQ.refreshAccessToken(accessData.refresh_token, function(err, data) {
+      should.not.exist(err);
+      should.exist(data);
+
+      data.ret.should.eql(0);
+      data.data.should.have.property('access_token', accessData.access_token);
+
+      done();
+    });
+  });
+});
+
 it('bqq.getBaseParams()', function() {
   var bqq = new BQQ({
     companyId: config.companyId,
